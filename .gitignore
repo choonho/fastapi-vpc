@@ -1,0 +1,37 @@
+# Python 관련
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.env
+*.venv
+.env/
+
+# IDE/Editor 관련
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 운영체제 파일
+.DS_Store
+Thumbs.db
+
+# 로그 파일
+*.log
+logs/
+*.out
+*.pid
+
+# 빌드 파일
+dist/
+build/
+*.egg-info/
+node_modules/
+
+# Docker 관련
+*.tar
+*.pid
+
+# Database
+test.db

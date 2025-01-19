@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  fastapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=sqlite:///./test.db
+      #- NEUTRON_URL=http://devstack-public-ip:9696/v2.0/networks  
+      - NEUTRON_URL=http://125.6.44.202:9696/networking/v2.0/networks  
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: vpc_db
+    ports:
+      - "5432:5432"

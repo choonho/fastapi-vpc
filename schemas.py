@@ -5,7 +5,7 @@ from pydantic import BaseModel, validator
 class VPCBase(BaseModel):
     name: str
     cidr: str
-
+    project_id: str
     @validator("cidr")
     def validate_cidr(cls, value):
         try:

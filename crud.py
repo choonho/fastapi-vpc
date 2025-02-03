@@ -5,10 +5,10 @@ from neutron_client import create_openstack_network
 
 from fastapi import HTTPException
 
-def create_vpc(db: Session, project_id: str, vpc: VPCCreate, x_auth_token):
+def create_vpc(db: Session, vpc: VPCCreate, x_auth_token):
     try:
-        network_id = create_openstack_network(vpc.name, project_id, x_auth_token)
-        db_vpc = VPC(project_id=project_id, vpc_id=network_id, name=vpc.name, cidr=vpc.cidr)
+        network_id = create_openstack_network(vpc.name, vpc.project_id, x_auth_token)
+        db_vpc = VPC(project_id=vpc.project_id, vpc_id=network_id, name=vpc.name, cidr=vpc.cidr)
         db.add(db_vpc)
         db.commit()
         db.refresh(db_vpc)
